@@ -753,56 +753,6 @@ body{background:linear-gradient(180deg,#b4d3e9 0%,#cae3f4 40%,#e3f2fd 70%,#e2f5d
 
 
 
-
-
-
-
-
-/* Стили для сообщений пользователя */
-.ai-msg-user {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 12px;
-  width: 100%;
-}
-
-.ai-bubble-user {
-  background-color: #007aff; /* Синий цвет Дії */
-  color: #ffffff;
-  padding: 12px 16px;
-  border-radius: 18px 18px 4px 18px;
-  font-size: 15px;
-  max-width: 75%;
-  line-height: 1.4;
-  word-wrap: break-word;
-  font-family: -apple-system, sans-serif;
-}
-
-/* Стили для индикатора загрузки */
-.ai-msg-loading {
-  font-style: italic;
-  color: #888;
-  margin-top: 5px;
-  margin-left: 36px;
-  font-size: 14px;
-}
-
-/* В CSS файле */
-.ai-input-row {
-    position: absolute !important;
-    bottom: 90px !important; /* Ровно над таббаром */
-    left: 0;
-    right: 0;
-    display: flex;
-    /* ... остальные параметры ... */
-}
-
-/* Гарантируем, что поле ввода Дії.AI не перекрывает таббар */
-#content-ai {
-  height: calc(100vh - 60px) !important; /* Уменьшаем высоту экрана на высоту таббара */
-  padding-bottom: 70px !important;       /* Делаем безопасный отступ снизу */
-}
-
 /* Фиксируем оригинальный таббар Дії поверх всех окон */
 .tab-bar, .tabbar, #tabbar, .footer-menu { 
   position: fixed !important;
@@ -1084,7 +1034,7 @@ body{background:linear-gradient(180deg,#b4d3e9 0%,#cae3f4 40%,#e3f2fd 70%,#e2f5d
                   <div class="field-block">
                     <span class="field-label" data-uk="Строк дії:" data-en="Expiry date:">Строк дії:</span>
                     <span class="field-value doc-foreign-expiry"></span>
-                  </div>
+                    </div>
                   <img class="signature-img doc-signature" src="" alt="Підпис">
                 </div>
               </div>
@@ -1475,9 +1425,6 @@ body{background:linear-gradient(180deg,#b4d3e9 0%,#cae3f4 40%,#e3f2fd 70%,#e2f5d
 </div>
 
 
-
-
-
 <!-- Бібліотеки в кінці body — гарантовано завантажуються після DOM -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
@@ -1486,39 +1433,40 @@ body{background:linear-gradient(180deg,#b4d3e9 0%,#cae3f4 40%,#e3f2fd 70%,#e2f5d
    ЦЕНТРАЛЬНЕ СХОВИЩЕ — ЗМІНЮЙТЕ ТІЛЬКИ ТУТ
 ================================================================ */
 var USER = {
-  firstName:      'Микола',
-  lastName:       'Котляр',
-  patronymic:     'Вікторович',
-  firstNameEn:    'MYKOLA',
-  lastNameEn:     'KOTLIAR',
-  dob:            '11.01.2005',
-  photoUA:        'https://cdn.phototourl.com/free/2026-06-04-033232d0-1cc5-42a9-88c8-69897e08543b.jpg',   /* ← ТУТ міняй фото паспорта України (URL або base64) */
-  photoIntl:      'https://cdn.phototourl.com/free/2026-06-04-12bc6973-589f-4772-8848-dc9e963101cd.jpg',   /* ← ТУТ міняй фото закордонного паспорта */
-  photoDL:        'https://cdn.phototourl.com/free/2026-06-04-421f62ca-f4cc-48c0-a48b-5fd1f9dad419.jpg',   /* ← ТУТ міняй фото водійських прав */
-  photo:          'https://cdn.phototourl.com/free/2026-06-04-033232d0-1cc5-42a9-88c8-69897e08543b.jpg',   /* ← ТУТ міняй фото єДокументу */
-  signature:      'https://cdn.phototourl.com/free/2026-06-03-5184db1b-41d2-4184-8bd1-533299f81d5c.png',
+  firstName:      'Петро',
+  lastName:       'Петренко',
+  patronymic:     'Петрович',
+  firstNameEn:    'PETRO',
+  lastNameEn:     'PETRENKO',
+  dob:            '01.01.2000',
+  photoUA:        'https://fotoarbat.ru/wp-content/uploads/2020/12/IMG_3271.jpg',   /* ← ТУТ міняй фото паспорта України (URL або base64) */
+  photoIntl:      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_GlichNTyWCtrs59mCORh6FKXrS_ess145g&s',   /* ← ТУТ міняй фото закордонного паспорта */
+  photoDL:        'https://fotoarbat.ru/wp-content/uploads/2020/12/IMG_5753.jpg',   /* ← ТУТ міняй фото водійських прав */
+  photo:          'https://fotoarbat.ru/wp-content/uploads/2020/12/IMG_3271.jpg',   /* ← ТУТ міняй фото єДокументу */
+  signature:      'https://cdn.phototourl.com/free/2026-06-04-a98c8dc2-32f0-49a0-be7a-ddd0ec77c570.png',
   sex:            'Ч', sexEn: 'M',
   nationality:    'Україна', nationalityEn: 'Ukraine',
-  placeOfBirth:   'М. ОДЕСА ОДЕСЬКА ОБЛАСТЬ УКРАЇНА',
-  address:        'УКРАЇНА ОДЕСЬКА ОБЛАСТЬ ОДЕСЬКИЙ РАЙОН М. ОДЕСА ВУЛ. ЧОРНОМОРСЬКОГО КОЗАЦТВА БУД. 114 КВ. 4',
-  addressReg:     '11.10.2013',
-  passportNum:    '011018440',
-  passportIssue:  '04.09.2024',
-  passportExpiry: '04.09.2034',
-  passportAuth:   '5114',
-  unzr:           '20050111-04938',
-  foreignPassNum: 'FE011018',
-  foreignExpiry:  '04.09.2034',
-  rnokpp:         '3836213393', 
-  driverLicNum:   'ВХА 739201',
+  placeOfBirth:   'М. КИЇВ КИЇВСЬКА ОБЛАСТЬ УКРАЇНА',
+  address:        'УКРАЇНА КИЇВСЬКА ОБЛАСТЬ КИЇВСЬКИЙ РАЙОН М. КИЇВ ВУЛ. ТАРАСА ШЕВЧЕНКА БУД. 8', 
+  addressReg:     '01.01.2014',
+  passportNum:    '023456678',
+  passportIssue:  '01.01.2020',
+  passportExpiry: '01.01.2030',
+  passportAuth:   '2345',
+  unzr:           '20001011-03551',
+  foreignPassNum: 'AA678912',
+  foreignIssue:  '01.01.2023',
+  foreignExpiry:  '01.01.2033',
+  rnokpp:         '3412341411', 
+  driverLicNum:   'ВHA 733214',
   driverCats:     'B',
-  driverIssue:    '15.03.2023',
-  driverExpiry:   '15.03.2033',
-  taxVerifiedDate:'25.05.2026'
+  driverIssue:    '25.05.2025',
+  driverExpiry:   '25.05.2027',
+  taxVerifiedDate:'29.05.2026'
 };
 /* ================================================================ */
 
-var currentPin = [1111];
+var currentPin = [];
 var currentCardIndex = 0;
 var totalCards = 6;
 var timerInterval = null;
@@ -1615,14 +1563,31 @@ function pressNum(num) {
     currentPin.push(num);
     updateDots();
   }
+
+  // Проверяем, ввели ли мы ровно 4 цифры
   if (currentPin.length === 4) {
-    setTimeout(function(){
-      document.getElementById('pin-screen').style.display = 'none';
-      document.getElementById('main-screen').style.display = 'flex';
-      populateUserData();
-      updateTickerTime();
-      resetAndStartTimer();
-    }, 200);
+    
+    // Получаем правильный PIN из localStorage или используем стандартный 1111
+    var saved = localStorage.getItem('user_app_pin');
+    var correctPin = saved ? JSON.parse(saved) : [2,0,0,7];
+
+    // Сравниваем то, что ввел юзер, с правильным кодом
+    if (JSON.stringify(currentPin) === JSON.stringify(correctPin)) {
+      // PIN ВЕРНЫЙ
+      setTimeout(function(){
+        document.getElementById('pin-screen').style.display = 'none';
+        document.getElementById('main-screen').style.display = 'flex';
+        populateUserData();
+        updateTickerTime();
+        resetAndStartTimer();
+      }, 200);
+    } else {
+      // PIN НЕВЕРНЫЙ
+      alert('Невірний PIN-код!');
+      // Сбрасываем всё, чтобы человек попробовал еще раз
+      currentPin = [];
+      updateDots();
+    }
   }
 }
 function deleteNum() {
@@ -1939,7 +1904,10 @@ function fiPassport(){
 function fiForeign(){
   return fPersonBlock(true) + fSexNat()
     + fCard(fBiRow('Номер документа:','Document No.', '<span style="font-size:18px;font-weight:600;">' + USER.foreignPassNum + '</span>', USER.foreignPassNum)
-      + '<div class="fi-two-col-row"><div class="fi-col">' + fBiRow('Дата видачі:','Date of issue', USER.passportIssue) + '</div><div class="fi-col">' + fBiRow('Дійсний до:','Date of expiry', USER.foreignExpiry) + '</div></div>')
+      + '<div class="fi-two-col-row">'
+      + '<div class="fi-col">' + fBiRow('Дата видачі:','Date of issue', USER.foreignIssue) + '</div>' // <--- Здесь она осталась
+      + '<div class="fi-col">' + fBiRow('Дійсний до:','Date of expiry', USER.foreignExpiry) + '</div>'
+      + '</div>')
     + fCard(fBiRow('Місце народження:','Place of birth', USER.placeOfBirth));
 }
 function fiRnokpp(){
@@ -2089,176 +2057,6 @@ function closeDiiaScanner() {
     cameraStream = null;
   }
 }
-
-
-function unlockApp() {
-  // 1. Прячем экран пин-кода (у тебя id может называться pin-screen, auth-screen или screen-pin)
-  document.getElementById('pin-screen').style.display = 'none'; 
-  
-  // 2. Показываем экран документов (content-documents — это id из твоей верстки!)
-  document.getElementById('content-documents').style.display = 'block';
-  
-  // 3. Показываем таббар (если он у тебя имеет отдельный id, например 'tabbar')
-  document.getElementById('tabbar').style.display = 'flex';
-}
-
-// Главная функция вызова оригинального Face ID телефона
-async function runNativeBiometrics() {
-  // 1. Проверяем базовую поддержку биометрии прибором
-  if (!window.PublicKeyCredential || 
-      typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable !== 'function') {
-    alert("Цей пристрій або браузер не підтримує нативний Face ID.");
-    return;
-  }
-
-  try {
-    // 2. Проверяем доступность локального биометрического сканера
-    const isAvailable = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-    if (!isAvailable) {
-      alert("Face ID не налаштовано на телефоні або доступ заблоковано.");
-      return;
-    }
-
-    // 3. Создаем ультра-легкий запрос, который заставит iOS включить Face ID локально
-    const challenge = new Uint8Array(32);
-    window.crypto.getRandomValues(challenge);
-
-    // Фикс: говорим системе использовать локальный аутентификатор (internal)
-    await navigator.credentials.get({
-      publicKey: {
-        challenge: challenge,
-        rpId: window.location.hostname,
-        userVerification: "required",
-        // ДОБАВЛЯЕМ ЭТОТ ПАРАМЕТР: он отсекает внешние ключи и QR-коды
-        authenticatorSelection: {
-          authenticatorAttachment: "platform", // Требуем датчик самого телефона
-          userVerification: "required"
-        }
-      }
-    });
-
-    // 4. Если сканирование лица прошло успешно, пускаем в приложение
-    unlockApp();
-
-  } catch (error) {
-    console.error("Помилка біометрії:", error);
-    // Чтобы не бесить пользователя ошибками при случайном нажатии, делаем мягкое уведомление
-    alert("Не вдалося пройти Face ID або авторизацію скасовано.");
-  }
-}
-
-
-
-
-
-
-// Твой персональный API ключ и URL к модели Gemini 1.5 Flash
-const GEMINI_API_KEY = "AQ.Ab8RN6IeE2o48wmnNtiALhQc51wlFxZecQYJT66W9ChLg6ra_w";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-// Функция отслеживания нажатия клавиши Enter в текстовом поле
-function handleAiKeyPress(event) {
-  if (event.key === "Enter") {
-    sendMsgToGemini();
-  }
-}
-
-async function sendMsgToGemini() {
-  const inputElement = document.getElementById("aiUserInput");
-  const userText = inputElement.value.trim();
-  
-  // Если поле пустое — ничего не делаем
-  if (!userText) return;
-
-  const messagesContainer = document.getElementById("aiMessagesContainer");
-
-  // 1. Создаем и добавляем сообщение пользователя на экран
-  const userMsgWrapper = document.createElement("div");
-  userMsgWrapper.className = "ai-msg-user";
-  
-  const userBubble = document.createElement("div");
-  userBubble.className = "ai-bubble-user";
-  userBubble.innerText = userText;
-  
-  userMsgWrapper.appendChild(userBubble);
-  messagesContainer.appendChild(userMsgWrapper);
-  
-  // Очищаем поле ввода и скроллим вниз
-  inputElement.value = "";
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  // 2. Создаем индикатор ожидания ответа
-  const loadingElement = document.createElement("div");
-  loadingElement.className = "ai-msg-loading";
-  loadingElement.id = "gemini-loading-indicator";
-  loadingElement.innerText = "Дія.AI думає...";
-  messagesContainer.appendChild(loadingElement);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  // Системный промпт (правила поведения ИИ)
-  const identityPrompt = "Ти — вбудований штучний інтелект Дія.AI у державному додатку Дія. Твоя мета — допомагати громадянам України. Відповідай виключно українською мовою. Твої відповіді мають бути короткими (максимум 2-3 речення), чіткими, офіційними, але доброзичливими.";
-
-  try {
-    // 3. Отправляем POST-запрос на сервера Google
-    const response = await fetch(GEMINI_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ 
-          parts: [{ text: `${identityPrompt}\n\nКористувач запитує: ${userText}` }] 
-        }]
-      })
-    });
-
-    const resultData = await response.json();
-    
-    // Удаляем индикатор загрузки
-    const currentLoading = document.getElementById("gemini-loading-indicator");
-    if (currentLoading) currentLoading.remove();
-
-    // Вытаскиваем чистый текст ответа нейросети
-    const aiReplyText = resultData.candidates[0].content.parts[0].text;
-
-    // 4. Генерируем HTML-структуру ответа ИИ, полностью повторяющую твой оригинал бота
-    const botMsgWrapper = document.createElement("div");
-    botMsgWrapper.className = "ai-msg-bot";
-
-    botMsgWrapper.innerHTML = `
-      <div class="ai-bot-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-          <path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div>
-        <div class="ai-bubble-bot">${aiReplyText}</div>
-      </div>
-    `;
-
-    messagesContainer.appendChild(botMsgWrapper);
-
-  } catch (err) {
-    console.error("Помилка при запиті до Gemini:", err);
-    
-    // Удаляем индикатор загрузки в случае сбоя
-    const currentLoading = document.getElementById("gemini-loading-indicator");
-    if (currentLoading) currentLoading.remove();
-
-    // Выводим сообщение о технической ошибке
-    const errorWrapper = document.createElement("div");
-    errorWrapper.className = "ai-msg-bot";
-    errorWrapper.innerHTML = `
-      <div class="ai-bot-icon" style="background:#ff3b30;">!</div>
-      <div>
-        <div class="ai-bubble-bot" style="color:#ff3b30;">Помилка підключення до Дія.AI. Спробуйте пізніше або перевірте API ключ.</div>
-      </div>
-    `;
-    messagesContainer.appendChild(errorWrapper);
-  }
-
-  // Автоматический скролл чата к самому новому сообщению
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
 
 
 
