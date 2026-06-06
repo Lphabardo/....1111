@@ -1124,30 +1124,38 @@ body{background:linear-gradient(180deg,#b4d3e9 0%,#cae3f4 40%,#e3f2fd 70%,#e2f5d
           </div>
 
           <div class="flip-card-inner" data-index="3">
-            <div class="passport-card-front card-driver" id="front-3">
-              <h2 class="doc-header-title" data-uk="Посвідчення водія" data-en="Driver's License">Посвідчення водія</h2>
-              <div class="doc-main-body">
-                <img class="doc-avatar doc-photo" src="" alt="">
-                <div class="doc-fields">
-                  <div class="field-block">
-                    <span class="field-label" data-uk="Документ №:" data-en="Document No:">Документ №:</span>
-                    <span class="field-value doc-driver-num"></span>
-                  </div>
-                  <div class="field-block">
-                    <span class="field-label" data-uk="Категорії:" data-en="Categories:">Категорії:</span>
-                    <span class="field-value doc-driver-cat"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="doc-status-ticker"><div class="ticker-wrap fi-ticker-target"></div></div>
-              <div class="doc-footer">
-                <div class="doc-name-block">
-                  <span class="doc-last-name" data-uk="" data-en=""></span>
-                  <span class="doc-first-name" data-uk="" data-en=""></span>
-                </div>
-                <button class="doc-menu-btn" data-cardidx="3"></button>
-              </div>
-            </div>
+  <div class="passport-card-front card-driver" id="front-3">
+    <h2 class="doc-header-title" data-uk="Посвідчення водія" data-en="Driver's License">Посвідчення водія</h2>
+    <div class="doc-main-body">
+      <img class="doc-avatar doc-photo" src="" alt="">
+      <div class="doc-fields">
+
+        <div class="field-block">
+          <span class="field-label" data-uk="Дата народження:" data-en="Date of birth:">Дата народження:</span>
+          <span class="field-value doc-dob"></span>
+        </div>
+
+        <div class="field-block">
+          <span class="field-label" data-uk="Категорія:" data-en="Category:">Категорія:</span>
+          <span class="field-value doc-driver-cat"></span>
+        </div>
+
+        <div class="field-block">
+          <span class="field-label" data-uk="Номер документа:" data-en="Document No:">Номер<br>документа:</span>
+          <span class="field-value doc-driver-num"></span>
+        </div>
+
+      </div>
+    </div>
+    <div class="doc-status-ticker"><div class="ticker-wrap fi-ticker-target"></div></div>
+    <div class="doc-footer">
+      <div class="doc-name-block">
+        <span class="doc-last-name" data-uk="" data-en=""></span>
+        <span class="doc-first-name" data-uk="" data-en=""></span>
+      </div>
+      <button class="doc-menu-btn" data-cardidx="3"></button>
+    </div>
+  </div>
             <div class="passport-card-back" id="back-3">
               <div class="back-tap-zone" data-cardidx="3">
                 <div class="timer-text countdown-timer-el">Код діятиме ще 2:59 хв</div>
@@ -1462,10 +1470,13 @@ var USER = {
   foreignExpiry:  '01.01.2033',
   rnokpp:         '3412341411', 
   driverLicNum:   'ВHA 733214',
-  driverCats:     'B',
+  driverCats:     'B, C',
+  driverCatDate:  '15.03.2023',
+  driverAuthority:'ТСЦ 5114',
   driverIssue:    '25.05.2025',
   driverExpiry:   '25.05.2027',
   taxVerifiedDate:'29.05.2026'
+
 };
 /* ================================================================ */
 
@@ -1918,10 +1929,43 @@ function fiRnokpp(){
     + fCard(fBiRow('РНОКПП:','Individual Tax Number', '<span style="font-size:22px;font-weight:600;">' + USER.rnokpp + '</span>', USER.rnokpp) + '<div class="fi-status-sub">Verified by State Tax Service on ' + USER.taxVerifiedDate + '</div>');
 }
 function fiDriver(){
-  return fPersonBlock(true) + fSexNat()
-    + fCard(fBiRow('Номер посвідчення:','License No.', '<span style="font-size:18px;font-weight:600;">' + USER.driverLicNum + '</span>', USER.driverLicNum)
-      + '<div class="fi-two-col-row"><div class="fi-col">' + fBiRow('Дата видачі:','Date of issue', USER.driverIssue) + '</div><div class="fi-col">' + fBiRow('Дійсний до:','Date of expiry', USER.driverExpiry) + '</div></div>'
-      + fBiRow('Категорії:','Categories', USER.driverCats));
+  return fCard(
+    '<div style="font-size:20px;font-weight:700;color:#000;line-height:1.4;">Driving Licence</div>' +
+    '<div style="font-size:15px;font-weight:400;color:#000;margin-top:2px;">Посвідчення водія</div>' +
+    '<div style="font-size:14px;color:#8e8e93;margin-top:2px;">Ukraine · Україна</div>'
+  ) +
+  fCard(
+    '<div class="fi-photo-row"><img src="' + USER.photoDL + '" class="fi-large-avatar" alt="Фото">' +
+    '<div class="fi-photo-side-fields">' +
+    '<div class="fi-data-group">' +
+    '<span class="fi-meta-label">Прізвище, ім\'я:<br><span style="color:#8e8e93;font-weight:400;">Surname, first name</span></span>' +
+    '<span class="fi-meta-value">' + USER.lastName + ' ' + USER.firstName + '<br>' + USER.patronymic + '</span>' +
+    '</div>' +
+    '<div class="fi-data-group"><span class="fi-meta-label">Дата народження:<br><span style="color:#8e8e93;font-weight:400;">Date of birth</span></span>' +
+    '<span class="fi-meta-value">' + USER.dob + '</span></div>' +
+    '<div class="fi-signature-wrap"><img src="' + USER.signature + '" alt="Підпис"></div>' +
+    '</div></div>'
+  ) +
+  fCard(
+    '<div class="fi-two-col-row"><div class="fi-col">' +
+    fBiRow('Стать:','Sex', USER.sex + '<br><span style="color:#8e8e93;font-weight:400;">' + USER.sexEn + '</span>') +
+    '</div><div class="fi-col">' +
+    fBiRow('Громадянство:','Nationality', USER.nationality + '<br><span style="color:#8e8e93;font-weight:400;">' + USER.nationalityEn + '</span>') +
+    '</div></div>'
+  ) +
+  fCard(
+    fBiRow('Номер посвідчення:','License No.', '<span style="font-size:18px;font-weight:600;">' + USER.driverLicNum + '</span>', USER.driverLicNum) +
+    '<div class="fi-two-col-row"><div class="fi-col">' +
+    fBiRow('Дата видачі:','Date of issue', USER.driverIssue) +
+    '</div><div class="fi-col">' +
+    fBiRow('Дійсний до:','Date of expiry', USER.driverExpiry) +
+    '</div></div>' +
+    fBiRow('Орган, що видав:','Authority', USER.driverAuthority)
+  ) +
+  fCard(
+    fBiRow('Категорія:','Category', USER.driverCats) +
+    fBiRow('Дата відкриття категорії:','Category issuing date', USER.driverCatDate)
+  );
 }
 function fiEdoc(){
   return fPersonBlock(false)
