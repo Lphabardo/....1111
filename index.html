@@ -1828,7 +1828,7 @@ dragTrigger.addEventListener('touchend', function(){
 var fiCurrentIdx = 0;
 function buildFullInfoContent(idx) {
   fiCurrentIdx = idx;
-  var titles = ['Паспорт громадянина України','Паспорт для виїзду за кордон','Картка платника податків','Посвідчення водія','єДокумент'];
+  var titles = ['Паспорт громадянина України','International Passport','Картка платника податків','Driving Licence','єДокумент'];
   var nums = [USER.passportNum, USER.foreignPassNum, USER.rnokpp, USER.driverLicNum, USER.rnokpp];
   document.getElementById('fi-title').textContent = titles[idx];
   document.getElementById('fi-main-num').textContent = nums[idx];
@@ -1916,13 +1916,17 @@ function fiPassport(){
     + fCard(fBiRow('Запис № (УНЗР):','Record No.', '<span style="font-size:18px;font-weight:600;">' + USER.unzr + '</span>', USER.unzr) + fBiRow('Місце народження:','Place of birth', USER.placeOfBirth) + fBiRow('Місце проживання:','Legal address', USER.address) + fBiRow('Дата реєстрації:','Registered on', USER.addressReg));
 }
 function fiForeign(){
-  return fPersonBlock(true) + fSexNat()
+  return fCard(
+    '<div style="font-size:20px;font-weight:700;color:#000;line-height:1.4;">International Passport</div>' +
+    '<div style="font-size:15px;font-weight:400;color:#000;margin-top:2px;">Паспорт для виїзду за кордон</div>' +
+    '<div style="font-size:14px;color:#8e8e93;margin-top:2px;">Ukraine · Україна</div>'
+  ) +
+  fPersonBlock(true) + fSexNat()
     + fCard(fBiRow('Номер документа:','Document No.', '<span style="font-size:18px;font-weight:600;">' + USER.foreignPassNum + '</span>', USER.foreignPassNum)
       + '<div class="fi-two-col-row">'
-      + '<div class="fi-col">' + fBiRow('Дата видачі:','Date of issue', USER.foreignIssue) + '</div>' // <--- Здесь она осталась
-      + '<div class="fi-col">' + fBiRow('Дійсний до:','Date of expiry', USER.foreignExpiry) + '</div>'
-      + '</div>')
-    + fCard(fBiRow('Місце народження:','Place of birth', USER.placeOfBirth));
+      + '<div class="fi-col">' + fBiRow('Дата видачі:','Date of issue', USER.passportIssue) + '</div><div class="fi-col">' + fBiRow('Дійсний до:','Date of expiry', USER.passportExpiry) + '</div></div>' + fBiRow('Орган, що видав:','Authority', USER.passportAuth))
+    + fCard(fBiRow('РНОКПП (ІПН):','Individual Tax Number', '<span style="font-size:18px;font-weight:600;">' + USER.rnokpp + '</span>', USER.rnokpp) + '<div class="fi-status-sub">Verified by State Tax Service on ' + USER.taxVerifiedDate + '</div>')
+    + fCard(fBiRow('Запис № (УНЗР):','Record No.', '<span style="font-size:18px;font-weight:600;">' + USER.unzr + '</span>', USER.unzr) + fBiRow('Місце народження:','Place of birth', USER.placeOfBirth) + fBiRow('Місце проживання:','Legal address', USER.address) + fBiRow('Дата реєстрації:','Registered on', USER.addressReg));
 }
 function fiRnokpp(){
   return fCard('<div class="fi-ua-fullname">' + USER.lastName + ' ' + USER.firstName + '<br>' + USER.patronymic + '</div><div style="margin-top:12px;">' + fRow('Дата народження:', USER.dob) + '</div>')
